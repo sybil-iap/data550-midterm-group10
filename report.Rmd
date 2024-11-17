@@ -1,0 +1,12 @@
+---
+title: "Final Report of NBA Players Analysis"
+author: "Group 10"
+date: "2024-11-17"
+output: html_document
+---
+
+```{r}
+library(here)
+library(ggplot2)
+```
+
