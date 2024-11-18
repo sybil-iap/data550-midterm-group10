@@ -62,3 +62,4 @@ print(boxplot)
 output_path_figures <- here::here("output/figures")
 boxplot_filename <- paste0("Team_Performance_", config$default_team, ".rds")
 saveRDS(boxplot, file = file.path(output_path_figures, boxplot_filename))
+
