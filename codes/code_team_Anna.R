@@ -4,17 +4,13 @@ here::i_am("report.Rmd")
 
 # Load required libraries
 library(dplyr)
+library(tidyr)
 library(ggplot2)
 library(yaml)
 library(here)
 
-# Configuration YAML for team analysis
-config_yaml <- "
-default_team: 'ATL'
-top_n_players: 10
-"
 
-config <- yaml::yaml.load(config_yaml)
+config <- yaml::yaml.load_file(here::here("config.yaml"))
 
 print(config$default_team)
 print(config$top_n_players)

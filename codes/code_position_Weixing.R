@@ -21,7 +21,7 @@ average_free_throw <- nba_cleaned %>%
   summarize(avg_free_throw = mean(free_throw_pct, na.rm = TRUE))
 
 
-ggplot(average_free_throw, aes(x = position, y = avg_free_throw, fill = position)) +
+avg_bar <- ggplot(average_free_throw, aes(x = position, y = avg_free_throw, fill = position)) +
   geom_bar(stat = "identity") +
   labs(
     title = "Average Free Throw Percentage by Player Position",
@@ -31,7 +31,7 @@ ggplot(average_free_throw, aes(x = position, y = avg_free_throw, fill = position
   theme_minimal()
 
 
-ggplot(nba_cleaned, aes(x = position, y = free_throw_pct, fill = position)) +
+boxplot_position <- ggplot(nba_cleaned, aes(x = position, y = free_throw_pct, fill = position)) +
   geom_boxplot() +
   labs(
     title = "Free Throw Percentage Distribution by Player Position",
@@ -39,5 +39,14 @@ ggplot(nba_cleaned, aes(x = position, y = free_throw_pct, fill = position)) +
     y = "Free Throw Percentage"
   ) +
   theme_minimal()
+
+
+output_path <- here::here("output/figures")
+bar_plot_name <- paste0("nba_position_bar", ".rds")
+box_plot_name <- paste0("nba_position_box", ".rds")
+# save data
+saveRDS(avg_bar, file = file.path(output_path, bar_plot_name))
+saveRDS(boxplot_position, file = file.path(output_path, box_plot_name))
+
 
 

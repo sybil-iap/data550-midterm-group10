@@ -1,12 +1,97 @@
 ---
 title: "Final Report of NBA Players Analysis"
 author: "Group 10"
-date: "2024-11-17"
+date: ""
 output: html_document
 ---
 
-```{r}
+```{r, here-i-am, message=FALSE, warning=FALSE, include=FALSE}
 library(here)
 library(ggplot2)
+library(knitr)
+library(yaml)
+here::i_am("report.Rmd")
+config <- yaml::yaml.load_file(here::here("config.yaml"))
 ```
+
+
+## Team-wise Analysis
+Compare performance metrics (e.g., average points, rebounds) across different teams. We use box plot to compare average points per game across teams and team-wise summary table showing average points, rebounds, and assists.
+```{r, team-summary}
+summary_filename <- paste0("Team_Summary_", config$default_team, ".rds")
+
+table_data <- readRDS(here::here("output/tables/",summary_filename))
+
+# Display the table
+kable(table_data, 
+      format = "html", 
+      caption = paste0("Summary table for Team ", config$default_team))
+
+```
+
+
+```{r, team-box-plot}
+#| fig.align = "center",
+#| out.width = "600px"
+boxplot_filename <- paste0("Team_Performance_", config$default_team, ".rds")
+
+box_plot <- readRDS(here::here("output/figures/",boxplot_filename))
+
+box_plot
+```
+
+
+## Player-wise Analysis
+Compare the rebounding strength of different players, we use summary table of top players with highest rebounds and scatter plot showing the relationship between rebounds and total points.
+```{r, player-summary}
+top_filename <- paste0("Top Players", ".rds")
+
+table_data <- readRDS(here::here("output/tables/",top_filename))
+
+# Display the table
+kable(table_data, format = "html", caption = "Summary table of top players ")
+```
+
+
+```{r, player-scatter}
+#| fig.align = "center",
+#| out.width = "600px"
+
+scatter_filename <- paste0("nba_player_", config$default_player, ".rds")
+
+scatter_plot <- readRDS(here::here("output/figures/",scatter_filename))
+
+scatter_plot
+```
+
+
+## Position-wise Analysis
+Analyzing the differences in free throw accuracy across player positions. We show bar charts and box plots to compare the average free throw percentage for each position, helping to see if certain positions perform better in free throw accuracy than others.
+
+```{r}
+#| fig.align = "center",
+#| out.width = "600px"
+bar_plot_name <- paste0("nba_position_bar", ".rds")
+bar_plot <- readRDS(here::here("output/figures/",bar_plot_name))
+
+bar_plot
+```
+
+
+```{r}
+#| fig.align = "center",
+#| out.width = "600px"
+box_plot_name <- paste0("nba_position_box", ".rds")
+box_plot2 <- readRDS(here::here("output/figures/",box_plot_name))
+
+box_plot2
+```
+
+
+
+
+
+
+
+
 

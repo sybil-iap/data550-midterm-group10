@@ -8,14 +8,8 @@ library(ggplot2)
 library(yaml)
 library(here)
 
-config_yaml <- "
-default_player: 'Trae Young'
-default_team: 'ATL'
-default_position: 'PG'
-top_n_rebounders: 10
-"
 
-config <- yaml::yaml.load(config_yaml)
+config <- yaml::yaml.load_file(here::here("config.yaml"))
 
 print(config$default_player)
 print(config$default_team)
