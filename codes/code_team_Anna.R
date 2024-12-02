@@ -35,7 +35,7 @@ print(team_summary)
 
 # Save the summary table as an RDS file
 output_path <- here::here("output/tables")
-summary_filename <- paste0("Team_Summary_", config$default_team, ".rds")
+summary_filename <- paste0("Team_Summary", ".rds")
 saveRDS(team_summary, file = file.path(output_path, summary_filename))
 
 # Create a box plot for average points, rebounds, and assists
@@ -56,6 +56,6 @@ print(boxplot)
 
 # Save the box plot as an RDS file
 output_path_figures <- here::here("output/figures")
-boxplot_filename <- paste0("Team_Performance_", config$default_team, ".rds")
+boxplot_filename <- paste0("Team_Performance", ".rds")
 saveRDS(boxplot, file = file.path(output_path_figures, boxplot_filename))
 

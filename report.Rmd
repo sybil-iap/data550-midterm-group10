@@ -18,9 +18,7 @@ config <- yaml::yaml.load_file(here::here("config.yaml"))
 ## Team-wise Analysis
 Compare performance metrics (e.g., average points, rebounds) across different teams. We use box plot to compare average points per game across teams and team-wise summary table showing average points, rebounds, and assists.
 ```{r, team-summary}
-summary_filename <- paste0("Team_Summary_", config$default_team, ".rds")
-
-table_data <- readRDS(here::here("output/tables/",summary_filename))
+table_data <- readRDS(here::here("output/tables/Team_Summary.rds"))
 
 # Display the table
 kable(table_data, 
@@ -33,9 +31,8 @@ kable(table_data,
 ```{r, team-box-plot}
 #| fig.align = "center",
 #| out.width = "600px"
-boxplot_filename <- paste0("Team_Performance_", config$default_team, ".rds")
 
-box_plot <- readRDS(here::here("output/figures/",boxplot_filename))
+box_plot <- readRDS(here::here("output/figures/Team_Performance.rds"))
 
 box_plot
 ```
@@ -46,7 +43,7 @@ Compare the rebounding strength of different players, we use summary table of to
 ```{r, player-summary}
 top_filename <- paste0("Top Players", ".rds")
 
-table_data <- readRDS(here::here("output/tables/",top_filename))
+table_data <- readRDS(here::here("output/tables/Top_Players.rds"))
 
 # Display the table
 kable(table_data, format = "html", caption = "Summary table of top players ")
@@ -57,9 +54,9 @@ kable(table_data, format = "html", caption = "Summary table of top players ")
 #| fig.align = "center",
 #| out.width = "600px"
 
-scatter_filename <- paste0("nba_player_", config$default_player, ".rds")
+scatter_filename <- paste0("player_scatter", ".rds")
 
-scatter_plot <- readRDS(here::here("output/figures/",scatter_filename))
+scatter_plot <- readRDS(here::here("output/figures/player_scatter.rds"))
 
 scatter_plot
 ```

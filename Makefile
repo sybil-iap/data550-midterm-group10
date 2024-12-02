@@ -1,30 +1,29 @@
 report.html: codes/render.R \
+	codes/code_team_Anna.R \
+	codes/code_player_Wen.R \
+	codes/code_position_Weixing.R \
   report.Rmd \
-  output/figures/nba_player_Trae Young.rds \
-  output/figures/nba_position_bar.rds \
-  output/figures/nba_position_box.rds \
-  output/figures/Team_Performance_ATL.rds \
-  output/tables/Team_Summary_ATL.rds \
-  output/tables/Top Players.rds
-	Rscript codes/render.R
+  output/figures/%.rds \
+  output/tables/%.rds \
+	Rscript	codes/render.R
 
 
-output/Team_Performance.rds: code/code_team_Anna.R
-	Rscript code/code_team_Anna.R
+output/%.rds: code/code_team_Anna.R
+	Rscript	code/code_team_Anna.R
 
 
-output/nba_player.rds: code/code_player_Wen.R
-	Rscript code/code_player_Wen.R
+output/%.rds: code/code_player_Wen.R
+	Rscript	code/code_player_Wen.R
 
 
-
-output/position.rds: code/code_position_Weixing.R 
-	Rscript code//code_position_Weixing.R
+output/%.rds: code/code_position_Weixing.R 
+	Rscript	code/code_position_Weixing.R
 
 .PHONY: install
 install:
-    Rscript -e "renv::restore(prompt = FALSE)"
+	@echo "Running renv::restore..."
+	Rscript -e "renv::restore(prompt = FALSE)"
 
 .PHONY: clean
 clean:
-	rm -f output/*.rds report.html
+	rm -f	output/*.rds report.html

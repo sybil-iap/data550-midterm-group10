@@ -36,7 +36,7 @@ top_rebounders <- nba_data %>%
 knitr::kable(top_rebounders, caption = "Top Players by Total Rebounds")
 
 output_path <- here::here("output/tables")
-top_filename <- paste0("Top Players", ".rds")
+top_filename <- paste0("Top_Players", ".rds")
 
 # save data
 saveRDS(top_rebounders, file = file.path(output_path, top_filename))
@@ -63,7 +63,7 @@ nba_filename <- paste0(
   config$player,".rds")
 
 output_path <- here::here("output/figures")
-nba_filename <- paste0("nba_player_", config$default_player, ".rds")
+nba_filename <- paste0("player_scatter", ".rds")
 
 # save data
 saveRDS(scatterplot, file = file.path(output_path, nba_filename))
