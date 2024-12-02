@@ -26,4 +26,4 @@ install:
 
 .PHONY: clean
 clean:
-	rm -f	output/*.rds report.html
+	rm -f	output/figures/*.rds output/tables/*.rds report.html

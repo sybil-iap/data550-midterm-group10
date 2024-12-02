@@ -59,8 +59,7 @@ scatterplot
 
 #update name of object that depends on parameter value
 nba_filename <- paste0(
-  "nba_player",
-  config$player,".rds")
+  "nba_player",".rds")
 
 output_path <- here::here("output/figures")
 nba_filename <- paste0("player_scatter", ".rds")
